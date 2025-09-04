@@ -1,0 +1,57 @@
+Pyspark Class 1 :
+_______ _____ _
+
+Data resource :
+
+File
+Database
+API
+External Source
+
+Now we need to process this data (clean, transform, transformation logic)
+
+To read this data we have different tool :
+
+1) Excel : It is not enough to read big amount of data
+   -----
+
+2) Pandas : It is good for big data but it have its own limitations 
+   ------
+# it runs on single node
+# it is not sufficient to perform operation on huge data
+
+3) Pyspark : It is an alternate of pandas and more efficient, it is multi-cluster, it have multiple nodes
+   -------
+
+# It is compute unit (actual task execution)
+# It runs on cluster
+# Cluster : It is a collection of nodes (Node 1...Node 2...Node 3)
+# We can split huge data among nodes for processing
+# Node have their own processing power
+
+
+Pyspark Architecture
+____________________                          
+                                                    
+Master node
+-----------                                        ---------------> Worker node
+Driver program                                     |                -----------
+                                                   |                Task   Cache
+|Spark Context| -----------------> Cluster Manager |
+                                                   |
+                                                   |
+                                                   ---------------> Worker node
+                                                                    -----------
+                                                                    Task   Cache
+
+Master node [ Driver program (Spark Context) ]   ----->   Cluster Manager   ----->   Worker nodes
+
+1. Task will come on "Master node"
+2. "Master node" will divide the task to "Worker nodes" by using "Cluster Manager"
+3. After execution of task on "Worker nodes" the combined result of all nodes will go to "Master node" through "Cluster Manager"
+4. "Master node" will provide the result to "End User"
+
+
+# We can't compare "Hadoop" and "Pyspark"
+# Hadoop's 'map reduce' and 'Pyspark' can be compared
+
